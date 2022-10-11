@@ -1,0 +1,16 @@
+def histogram(array):
+  length = 0
+  for i in array:
+    length += 1
+
+  
+  for e in range (0,length):
+    currentline = ""
+    for i in range (0,array[e]):
+      currentline = currentline + "*"
+
+    print(currentline)
+  
+
+
+histogram([8,9,3,4])
