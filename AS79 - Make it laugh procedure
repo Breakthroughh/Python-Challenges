@@ -1,0 +1,8 @@
+def make_it_laugh(string):
+
+  string = str(string)
+  string = string.replace("a","haha").replace("e","haha").replace("i","haha").replace("o","haha").replace("u","haha")
+  print(string)
+
+
+make_it_laugh("I like green eggs and ham buttocks")
