@@ -1,0 +1,5 @@
+def stringreversal(string):
+  string = str(string)
+  print(string[::-1])
+
+stringreversal("Green eggs and ham")
