@@ -1,0 +1,25 @@
+import os
+from time import sleep
+
+
+
+print('''1
+2
+3
+4
+5''')
+
+
+def clearoption():
+  clear = input("\nWould you like to clear the screen? ")
+  if clear in ("yes", "y","Yes"):
+  
+    os.system('clear')   # Use "clear" for Linux/Mac, or "cls" for Windows
+  
+
+
+
+sleep(2)
+print("Hard work pays off. Don't be afraid. Swipe when you feel resistance on the drive! ")
+
+clearoption()
