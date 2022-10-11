@@ -1,0 +1,12 @@
+pi = 3.14159265358
+
+def CircleArea(radius):
+  Area = pi*(radius**2)
+  print("Area = ", Area)
+
+def CircleCircumference(radius):
+  circumference = 2*pi*radius
+  print("Circumference = ", circumference)
+
+CircleArea(10)
+CircleCircumference(3)
