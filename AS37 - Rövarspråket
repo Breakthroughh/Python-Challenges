@@ -1,0 +1,47 @@
+
+def encode(string):
+
+
+  translated = ""
+  length = len(string)
+
+  global currentgroup
+  currentgroup = ""
+
+  
+  for i in range(0,length):      
+  
+    print (string[i])
+    if string[i] in ('A','E','I','O','U','a','e','i','o','u') : #I.e. if the char is a vowel
+        if currentgroup != "":
+            translated += currentgroup + "o" + currentgroup
+        currentgroup = ""
+        translated += string[i]
+        
+    elif string[i] in ('b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z','B','C','D','F','G','H','J','K','L','M','N','P','Q','R','S','T','V','W','X','Y','Z'):      #If the char is a consonant
+        currentgroup = currentgroup + string[i]
+        #print("Group is ", currentgroup)   
+        
+      
+        
+      
+    if string[i] == " ":
+        translated += currentgroup + "o" + currentgroup
+        currentgroup = ""
+        translated += string[i]
+        
+    if i == int(len(string))-1:
+        #print("last char")
+        if currentgroup != "":
+            translated += currentgroup + "o" + currentgroup
+      
+
+      
+  print(translated)
+
+encode("robber language") 
+
+ #rorobbobberor lolangonguagoge
+
+encode('Kalle Blomkvist')
+#Kokallolle Bloblomkvomkvistost
