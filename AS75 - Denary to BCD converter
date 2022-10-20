@@ -1,0 +1,40 @@
+denary = str(input("Input an integer denary number: "))
+
+BCD = ""
+currentdigit = ""
+for i in range (0,len(denary)):
+  if denary[i] == "0":
+    currentdigit = "0000"  
+  if denary[i] == "1":
+    currentdigit = "0001"
+  if denary[i] == "2":
+    currentdigit = "0010"
+
+  if denary[i] == "3":
+    currentdigit = "0011"
+
+  if denary[i] == "4":
+    currentdigit = "0100"
+
+  if denary[i] == "5":
+    currentdigit = "0101"
+
+  if denary[i] == "6":
+    currentdigit = "0110"
+
+  if denary[i] == "7":
+    currentdigit = "0111"
+
+  if denary[i] == "8":
+    currentdigit = "1000"
+
+  if denary[i] == "9":
+    currentdigit = "1001"
+
+
+    
+
+  BCD += currentdigit + " "
+  currentdigit = ""
+
+print(BCD)
