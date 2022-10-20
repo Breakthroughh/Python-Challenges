@@ -1,0 +1,26 @@
+
+byte = str(input("Enter a byte: "))
+byte = byte.replace(" ","") #Removes spaces
+
+
+#Check whether it is length 8
+
+while len(byte) != 8:
+  byte = input("Please reenter, the byte must have Length 8 characters. ")
+  byte = byte.replace(" ","")
+  
+
+
+
+numof1 = 0
+for i in range(0,len(byte)):
+  if byte[i] == "1":
+    numof1 += 1
+
+print("NUmber of 1s = ", numof1)
+
+if numof1 % 2 == 0:
+  print("This byte has even parity")
+else:
+  print("Error detected - this has odd parity")
+
