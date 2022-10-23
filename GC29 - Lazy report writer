@@ -1,0 +1,11 @@
+import random
+
+Comments = ["is a hard-working student", "is very focused and works well independently","is a self-motivated student","consistently completes homework assignments.","is a great contributor in class","works well with others"]
+
+numofstudents = int(input("How many students? "))
+
+
+for i in range(1,numofstudents+1):
+    chosen = random.choice(Comments)
+    print("Student" ,i, chosen)
+  
