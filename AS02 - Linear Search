@@ -1,0 +1,17 @@
+list = ["red","green","blue","orange","black","magenta","yellow","white","brown","azure"]
+
+def linearsearch(item):
+  found = False 
+  for i in range (0,len(list)):
+    if list[i] == item:
+      found = True
+      print("Found the item at index" , i)
+  
+  
+  if found == False:
+    print("Can't find ")
+
+
+linearsearch("blue")
+linearsearch("magenta")
+linearsearch("brown")
