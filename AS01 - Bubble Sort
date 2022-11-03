@@ -1,0 +1,19 @@
+n = [8,1,2,9,5,6,4,7,3]
+moves = 0
+
+length = int(len(n))
+
+for i in range (0,length-1):   #Cycles
+
+  for j in range (0,length-1):   # Goes through each element
+    if n[j] > n[j+1]:
+      Buffer = n[j]
+      n[j] = n[j+1]
+      n[j+1] = Buffer
+      moves += 1
+      print(n)
+      
+  length -= 1
+
+print(n)
+print("Swaps needed = ", moves)
