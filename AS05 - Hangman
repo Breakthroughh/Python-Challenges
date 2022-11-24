@@ -1,0 +1,89 @@
+import random
+
+Mistakes = 0
+Matches = 0 
+Words = ["galaxy","andromeda","strength","magician","xylophone"]
+userword1 = ""
+userworddisplay = ""
+letterinput = ""
+wordguessed = False
+Hangmanstage = '''=================
+
+
+
+ 
+-----
+=================
+''', '''=================
+ |
+ |
+ |
+---
+=================
+''', '''=================
+ |-----
+ |
+ |
+---
+=================
+''','''=================
+ |-----
+ |    o
+ |    |
+ |    
+ |
+---
+=================
+''','''=================
+ |-----
+ |    o
+ |   /|\\
+ |    |
+ |   / \\
+ |
+---
+=================
+'''
+
+Chosenword = Words[random.randint(0,4)]
+for i in range (0,len(Chosenword)):
+  userword1 = userword1 + "_"
+   
+print("Currently = ", userword1)
+
+
+while Mistakes <= 4:
+  
+  if "_" not in userword1:
+      wordguessed = True 
+
+  if wordguessed == True:
+    print("Congrats, you guessed correctly! ")
+    break
+  
+  letterinput = input("Guess a lower case letter: ")
+  
+  for i in range (0,len(Chosenword)):
+    if letterinput == Chosenword[i]:
+      userworddisplay = userworddisplay + letterinput
+      Matches += 1
+  
+    else:
+      userworddisplay = userworddisplay + userword1[i]
+
+
+
+  if Matches == 0:
+    Mistakes += 1
+  
+  try:
+    print(Hangmanstage[Mistakes])
+    print("You have: " , userworddisplay)
+  except:
+    print("Oh dear, you didn't guess in time!")
+    break
+
+  
+  Matches = 0
+  userword1 = userworddisplay
+  userworddisplay = ""
