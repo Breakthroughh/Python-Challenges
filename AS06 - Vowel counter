@@ -1,0 +1,13 @@
+def vowelcounter(str):
+  vowels = ["a","e","i","o","u"]
+  vowelcount = 0
+
+  for i in range (0,len(str)):
+    if str[i] in vowels:
+      vowelcount += 1
+
+  print("There are",vowelcount, "vowels")
+
+input = input("Input: ")
+
+vowelcounter(input)
