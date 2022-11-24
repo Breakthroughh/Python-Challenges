@@ -1,0 +1,4 @@
+input = input("Text please: ")
+
+reverse = input[::-1]
+print(reverse)
