@@ -1,0 +1,41 @@
+n = int(input("What is n (rows) : "))
+m = int(input("What is m (columns) : "))
+
+bigarray = []
+chessboard = []
+
+
+for i in range(n):
+    chessboard.append([])
+    for j in range(m):
+        f = " "
+        chessboard[i].append(f)
+
+
+#print(chessboard)
+
+
+nm = n*m
+
+for i in range (0,nm):
+  if i % 2 == 0:
+    bigarray.append('.')
+
+  if i % 2 == 1:
+    bigarray.append('*')
+
+total = 0 
+
+#print(bigarray)
+
+while total < nm:  
+  for j in range(0,n):
+    for k in range(0,m):
+
+      chessboard[j][k] = bigarray[total]
+
+      total += 1
+  
+for i in chessboard:
+  print(i)
+#Wanted to print it out in a more nicer way
