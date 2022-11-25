@@ -1,0 +1,86 @@
+
+romanones = ["","I","II","III","IV","V","VI","VII","VIII","IX"]
+romantens = ["","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"]
+romanhundreds = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"]
+romanthousands = ["","M","MM","MMM","MV"]
+
+outputnumber = ""
+
+
+
+def denarytoroman(number):
+  length = len(str(number))
+
+  print("Length = ", length)
+  if length == 1:
+    onesdigit = int(number[0])
+    outputnumber = str(romanones[onesdigit]) 
+
+
+  if length == 2:
+    onesdigit = int(number[1])
+    tensdigit = int(number[0])
+    outputnumber = str(romantens[tensdigit]) + str(romanones[onesdigit]) 
+
+
+  if length == 3:
+    onesdigit = int(number[2])
+    tensdigit = int(number[1])
+    hundredsdigit = int(number[0])
+    outputnumber = str(romanhundreds[hundredsdigit]) + str(romantens[tensdigit]) + str(romanones[onesdigit]) 
+
+    
+  if length == 4:
+    onesdigit = int(number[3])
+    tensdigit = int(number[2])
+    hundredsdigit = int(number[1])
+    thousandsdigit = int(number[0])
+    outputnumber = str(romanthousands[thousandsdigit]) + str(romanhundreds[hundredsdigit]) + str(romantens[tensdigit]) + str(romanones[onesdigit]) 
+
+    print("Ones digit = ", onesdigit)
+    print("Tens digit = ", tensdigit)
+
+  
+  print(outputnumber)
+
+
+#denarytoroman("1239")
+  
+  
+  
+
+romandigits = ["I","V","X","L","C","D","M"]
+romandigitsvalue = [1,5,10,50,100,500,1000]
+def romantodenary(number):
+
+    numofletters = len(number)
+    total = 0
+    
+    for i in range (0,numofletters):
+        
+        currentdigit  = number[i]
+        if i == numofletters-1:
+            total += romandigitsvalue[romandigits.index(currentdigit)]
+            
+        
+        if i < numofletters-1:
+            nextdigit = number[i+1]
+            if romandigitsvalue[romandigits.index(currentdigit)] < romandigitsvalue[romandigits.index(nextdigit)]:
+                total -= romandigitsvalue[romandigits.index(currentdigit)]
+            else:
+                total += romandigitsvalue[romandigits.index(currentdigit)]
+        
+
+    print(total)        
+#romantodenary("MCCXXXIX")
+
+
+
+conversion = input("Would you like to convert from A: denary to roman or B: roman to denary? " )
+
+if conversion == "A":
+    inputnumber = str(input("Enter a denary number:  "))
+    denarytoroman(inputnumber)
+if conversion == "B":
+    inputroman = str(input("Enter a roman number:  "))
+    romantodenary(inputroman)
