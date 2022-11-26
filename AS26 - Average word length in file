@@ -1,0 +1,33 @@
+filename = "inspire.txt"
+
+wordcount = 0
+charactercount = 0
+
+with open(filename, "r") as filevar:
+  wholefile = filevar.read()
+
+  print(wholefile)
+
+  
+  Seperateline = wholefile.split("\n")
+#Turns file into list with each line
+
+  
+
+  for i in range(0,len(Seperateline)):
+    singleline = str(Seperateline[i])
+    #Extracts the line from the list
+
+
+    wordssplit = singleline.split()
+    #Splits the line into a list of words
+    for j in range (0,len(wordssplit)):
+      lengthofword = len(wordssplit[j])
+      charactercount += lengthofword
+      wordcount += 1
+      
+
+print("Non-space characters: ",charactercount)
+print("Number of words: ",wordcount)
+
+print("Therefore average word length = ", float(charactercount/wordcount))
