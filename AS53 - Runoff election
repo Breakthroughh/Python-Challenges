@@ -1,0 +1,135 @@
+firstplacevotesarray = [0,0,0,0]
+highestvotes = 0
+
+votes = [["a","b","c","d"],
+         ["b","d","a","c"],
+         ["c","a","b","d"],
+         ["d","a","c","b"],
+         ["a","b","d","c"],
+         ["b","c","a","d"],
+         ["a","b","c","d"],
+         ["b","d","a","c"],
+         #Remove the following to test if the code can remove 1 or more candidates
+         ["d","a","c","b"]
+         
+]
+
+numofvoters = (len(votes))
+print("There are ",numofvoters,"voters")
+                
+
+for i in range(0,len(votes)): #Count first place votes
+  if votes[i][0]=="a":
+     firstplacevotesarray[0] += 1
+  
+  if votes[i][0]=="b":
+     firstplacevotesarray[1] += 1
+      
+  if votes[i][0]=="c":
+    firstplacevotesarray[2] += 1
+  
+  if votes[i][0]=="d":
+    firstplacevotesarray[3] += 1
+
+for i in range(0,len(firstplacevotesarray)): #Find the winning number of votes
+  highestvotes =firstplacevotesarray[0]
+  if firstplacevotesarray[1] > highestvotes:
+     highestvotes = firstplacevotesarray[1]
+  
+  if firstplacevotesarray[2] > highestvotes:
+    highestvotes = firstplacevotesarray[2]
+    
+  if firstplacevotesarray[3]> highestvotes:
+    highestvotes = firstplacevotesarray[3]
+
+print("Winning number of votes = ", highestvotes)
+print(firstplacevotesarray)
+
+winners = 0
+for i in range(0,4):
+  if firstplacevotesarray[i] == highestvotes:
+    winners += 1
+print("There are",winners," candidates with the highest votes")
+
+if winners > 1:  #I.e. there is a tie
+  print("There is a tie between 2 or more candidates")
+  losingnumberofvotes = firstplacevotesarray[0]
+
+    
+  for i in range(0,len(firstplacevotesarray)):
+   
+    if firstplacevotesarray[1] < losingnumberofvotes:
+      losingnumberofvotes = firstplacevotesarray[1]
+     
+    
+    if firstplacevotesarray[2] < losingnumberofvotes:
+      losingnumberofvotes = firstplacevotesarray[2]
+      
+    if firstplacevotesarray[3] < losingnumberofvotes:
+      losingnumberofvotes = firstplacevotesarray[3]
+print("Losing number of votes =", losingnumberofvotes)
+
+print("All candidates with" , losingnumberofvotes," number of votes will be removed")
+
+if firstplacevotesarray[0] == losingnumberofvotes:
+  for i in range(0,numofvoters):
+    votes[i].remove("a")
+
+if firstplacevotesarray[1] == losingnumberofvotes:
+  for i in range(0,numofvoters):
+    votes[i].remove("b")
+
+if firstplacevotesarray[2] == losingnumberofvotes:
+  for i in range(0,numofvoters):
+    votes[i].remove("c")
+
+if firstplacevotesarray[3] == losingnumberofvotes:
+  for i in range(0,numofvoters):
+    votes[i].remove("d")
+
+
+print(votes)
+
+
+
+
+firstplacevotesarray = [0,0,0,0]
+
+for i in range(0,len(votes)): #Count first place votes
+  if votes[i][0]=="a":
+     firstplacevotesarray[0] += 1
+  
+  if votes[i][0]=="b":
+     firstplacevotesarray[1] += 1
+      
+  if votes[i][0]=="c":
+    firstplacevotesarray[2] += 1
+  
+  if votes[i][0]=="d":
+    firstplacevotesarray[3] += 1
+
+for i in range(0,len(firstplacevotesarray)): #Find the winning number of votes
+  highestvotes =firstplacevotesarray[0]
+  if firstplacevotesarray[1] > highestvotes:
+     highestvotes = firstplacevotesarray[1]
+  
+  if firstplacevotesarray[2] > highestvotes:
+    highestvotes = firstplacevotesarray[2]
+    
+  if firstplacevotesarray[3]> highestvotes:
+    highestvotes = firstplacevotesarray[3]
+
+print("Winning number of votes = ", highestvotes)
+print(firstplacevotesarray)
+
+if highestvotes == firstplacevotesarray[0]:
+  print("Winner of the election is A! ")
+
+if highestvotes == firstplacevotesarray[1]:
+  print("Winner of the election is B! ")
+
+if highestvotes == firstplacevotesarray[2]:
+  print("Winner of the election is C! ")
+
+if highestvotes == firstplacevotesarray[3]:
+  print("Winner of the election is D! ")
