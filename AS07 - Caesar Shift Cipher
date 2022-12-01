@@ -1,0 +1,29 @@
+letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+
+string = input("Enter a message: ")
+shift = int(input("How much to shift?"))
+direction = input("In what direction? Right or left? ")
+outputstring = ""
+
+characters = len(string)
+
+for i in range(0,characters):
+  currentchar = string[i]
+
+  if currentchar in letters:
+    
+    value = letters.index(currentchar)
+
+
+    
+    if direction in ("right","r"):
+      value = value + shift
+    if direction in ("left","l"):
+      value -= shift
+  
+    value = value % 26
+  
+    currentchar = letters[value]
+  outputstring = outputstring + currentchar
+
+print("Encoded message = ", outputstring )
