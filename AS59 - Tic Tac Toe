@@ -1,0 +1,75 @@
+table = [["","",""],
+         ["","",""],
+         ["","",""]
+]
+
+win = False
+
+moves = 0
+
+def printtable():
+  print(table[0])
+  print(table[1])
+  print(table[2])
+
+def checkwin():
+  global win  #Rows wins
+  if table[0][0] == table[0][1] == table[0][2] == "X" or  table[0][0] == table[0][1] == table[0][2] == "O" :
+    win = True
+  if table[1][0] == table[1][1] == table[1][2] == "X" or table[1][0] == table[1][1] == table[1][2] == "O":
+    win = True
+
+  if table[2][0] == table[2][1] == table[2][2] == "X" or  table[2][0] == table[2][1] == table[2][2] == "O":
+    win = True
+  #Columns win
+  if table[0][0] == table[1][0] == table[2][0] == "X" or table[0][0] == table[1][0] == table[2][0]=="O":
+    win = True
+
+  if table[0][1] == table[1][1] == table[2][1] == "X" or table[0][1] == table[1][1] == table[2][1] == "O":
+    win = True
+
+  if table[0][2] == table[1][2] == table[2][2] == "X" or table[0][2] == table[1][2] == table[2][2] == "O":
+    win = True
+  #Diagonals win
+
+  if table[0][0] == table[1][1] == table[2][2] == "X" or table[0][0] == table[1][1] == table[2][2] == "O":
+    win = True
+
+  if table[0][2] == table[1][1] == table[2][0] == "X" or table[0][2] == table[1][1] == table[2][0] == "O":
+    win = True
+    
+
+printtable()
+while win == False:
+  user1row = int(input("Player 1. You are X: What row?"))
+  user1column = int(input("Player 1: What column?"))
+  
+  table[user1row-1][user1column-1] = "X"
+  
+  printtable()
+  checkwin()
+  moves += 1
+  if win == True:
+    print ("Player 1 wins")
+    break
+
+  if moves == 9:
+    break
+  user2row = int(input("Player 2. You are O: What row? "))
+  user2column = int(input("Player 2: What column? "))
+  
+  table[user2row-1][user2column-1] = "O"
+  
+  printtable()
+  checkwin()
+
+  if win == True:
+    print("Player 2 wins")
+    break
+
+
+  moves += 1
+  
+  
+if win == False:
+  print("\n There is a Draw")
