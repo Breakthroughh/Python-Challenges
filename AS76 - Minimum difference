@@ -1,0 +1,25 @@
+array = [1,4,10,20]
+
+elements = len(array)
+leastdifference = array[1] - array[0]
+
+
+for i in range (0,elements):
+  for j in range (0, elements):
+
+    if i != j:
+      difference = array[i] - array[j]
+
+    
+      if difference < 0:
+        difference = -1*difference
+
+    #if difference != 0:
+      
+
+
+      if difference < leastdifference:
+        leastdifference = difference
+
+
+print("Smallest difference = ",leastdifference)
