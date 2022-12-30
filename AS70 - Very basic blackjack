@@ -1,0 +1,183 @@
+import random
+
+#First to 21 total. Ace is 1 or 11. 
+
+deckofcards = ["AH","2H","3H","4H","5H","6H","7H","8H","9H","10H","JH","QH","KH",
+                "AD","2D","3D","4D","5D","6D","7D","8D","9D","10D","JD","QD","KD",
+                "AC","2C","3C","4C","5C","6C","7C","8C","9C","10C","JC","QC","KC",
+                "AS","2S","3S","4S","5S","6S","7S","8S","9S","10S","JS","QS","KS"]
+Player1hand = []
+Player2hand = []
+
+#Just say ace is 1 first. 
+def findtotal(Array):
+  playertotal1 = 0
+  playertotal2 = 0
+  for i in range (0,len(Array)):
+
+    if len(Array[i]) == 2:
+      
+      Cardtype = Array[i][0]
+    if len(Array[i]) == 3:
+      Cardtype = str(Array[i][0]) + str(Array[i][1])
+
+    
+    if Cardtype == "A":  
+      playertotal1 += 1
+      playertotal2 += 11
+    if Cardtype in ("2","3","4","5","6","7","8","9","10"):
+      playertotal1 += int(Cardtype)
+      playertotal2 += int(Cardtype)
+    if Cardtype in ("J","Q","K"):
+      playertotal1 += 10
+      playertotal2 += 10
+
+  print("Possible total 1 = ",playertotal1)
+  print("Possible total 2 = ",playertotal2)
+  
+  
+for i in range(0,2):
+  index = random.randint(0,len(deckofcards)-1)
+  selectedcard = deckofcards[index]
+  Player1hand.append(selectedcard)
+  deckofcards.remove(selectedcard)
+
+for i in range(0,2):
+  index = random.randint(0,len(deckofcards)-1)
+  selectedcard = deckofcards[index]
+  Player2hand.append(selectedcard)
+  deckofcards.remove(selectedcard)
+
+
+
+playerbust = False
+player1bust = False
+player2bust = False
+count = 0
+
+while playerbust == False:
+  count += 1
+  print("Round "+str(count))
+
+  
+  print("Current Player 1 hand: ",Player1hand)
+  print("Current Player 2 hand: ",Player2hand)
+
+  Player1hit = input("P1, would you like another card? ")
+  if Player1hit in "yes":
+    index = random.randint(0,len(deckofcards))
+    selectedcard = deckofcards[index]
+    Player1hand.append(selectedcard)
+    deckofcards.remove(selectedcard)
+
+  print("Current Player 1 hand: ",Player1hand)
+
+  player1total1 = 0
+  player1total2 = 0
+  for i in range (0,len(Player1hand)):
+
+    if len(Player1hand[i]) == 2:
+      Cardtype = Player1hand[i][0]
+
+    if len(Player1hand[i]) == 3:
+      Cardtype = str(Player1hand[i][0]) + str(Player1hand[i][1])
+    
+    
+    if Cardtype == "A":  
+      player1total1 += 1
+      player1total2 += 11
+    if Cardtype in ("2","3","4","5","6","7","8","9","10"):
+      player1total1 += int(Cardtype)
+      player1total2 += int(Cardtype)
+    if Cardtype in ("J","Q","K"):
+      player1total1 += 10
+      player1total2 += 10
+
+  print("P1 total 1 = ",player1total1)
+  print("P1 total 2 = ",player1total2)
+
+  if player1total1>21:
+    print("Player 1 BUST")
+    player1bust = True
+    playerbust = True
+
+
+  #Player 2 turn
+
+  Player2hit = input("P2, would you like another card? ")
+  if Player2hit in "yes":
+    index = random.randint(0,len(deckofcards))
+    selectedcard = deckofcards[index]
+    Player2hand.append(selectedcard)
+    deckofcards.remove(selectedcard)
+
+  print("Current Player 2 hand: ",Player2hand)
+
+  player2total1 = 0
+  player2total2 = 0
+  for i in range (0,len(Player2hand)):
+
+    if len(Player2hand[i]) == 2:
+      Cardtype = Player2hand[i][0]
+
+    if len(Player2hand[i]) == 3:
+      Cardtype = str(Player2hand[i][0]) + str(Player2hand[i][1])
+    
+    
+    if Cardtype == "A":  
+      player2total1 += 1
+      player2total2 += 11
+    if Cardtype in ("2","3","4","5","6","7","8","9","10"):
+      player2total1 += int(Cardtype)
+      player2total2 += int(Cardtype)
+    if Cardtype in ("J","Q","K"):
+      player2total1 += 10
+      player2total2 += 10
+
+  print("P2 total 1 = ",player2total1)
+  print("P2 total 2 = ",player2total2)
+
+  if player2total1>21:
+    print("Player 2 BUST")
+    player2bust = True
+    playerbust = True
+
+  
+
+  if Player1hit != "yes" and Player2hit != "yes":
+    #To repeat for Player 2
+    if player1bust == False and player2bust == False:
+      bestplayer1score = 0
+      if player1total2 > 21:
+        bestplayer1score = player1total1
+      if player1total2 <= 21:
+        bestplayer1score = player1total2
+
+      bestplayer2score = 0
+      if player2total2 > 21:
+        bestplayer2score = player2total1
+      if player2total2 <= 21:
+        bestplayer2score = player2total2
+
+      if bestplayer1score > bestplayer2score:
+        print("Player 1 WINS")
+        break
+      if bestplayer1score < bestplayer2score:
+        print("Player 2 WINS")
+        break
+      if bestplayer1score == bestplayer2score:
+        print("Tie")
+        break
+
+
+if player1bust == True and player2bust == True:
+  print("Tie because both players bust")
+
+if player1bust == True and player2bust == False:
+  print("Player 1 bust, so Player 2 WINS")
+
+if player1bust == False and player2bust == True:
+  print("Player 2 bust, so Player 1 WINS")
+
+
+
