@@ -1,0 +1,115 @@
+filename = "caesarshift.txt"
+
+#Uses a text file called caesarshift.txt
+#ONLY LOWERCASE LETTERS 
+
+#Example 1 Cipher text to decode = doov zhoo wkdw hqgv zhoo. (Shift 3 to the left)
+#Example 2 cipher text to decode = krpcfijnzwk. (Shift 9 to the right)
+#Example 3 Cipher text to decode = ( Shift 7 to the left )
+# adhz iypsspn, huk aol zspaof avclz
+# kpk nfyl huk nptisl pu aol dhil:
+# hss tptzf dlyl aol ivyvnvclz,
+# huk aol tvtl yhaoz vbanyhil.
+# ildhyl aol qhiilydvjr, tf zvu!
+# aol qhdz aoha ipal, aol jshdz aoha jhajo!
+# ildhyl aol qbiqbi ipyk, huk zobu
+# aol mybtpvbz ihuklyzuhajo!
+
+with open("caesarshift.txt","r") as filevar:
+    wholefile = filevar.read()
+    print("The current file looks like this:::")
+    print(wholefile)
+
+encodeordecode = input("Would you like to encode or decode? ")
+
+letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+           "w", "x", "y", "z"]
+
+
+
+newtext = ""
+
+if encodeordecode == "encode":
+
+    shift = int(input("How much to shift?"))
+    direction = input("In what direction? Right or left? ")
+
+    with open(filename, "r") as filevar:
+        for line in filevar:         #For every line in the file
+            print(line)
+            outputstring = ""
+
+            characters = len(line)
+
+            for i in range(0, characters):  #For every character in the line
+                currentchar = line[i]
+
+                if currentchar in letters:  #IF the character is a letter
+
+                    lettervalue = letters.index(currentchar)
+
+                    if direction in ("right", "r"):
+                        lettervalue += shift
+                    if direction in ("left", "l"):
+                        lettervalue -= shift
+
+                    lettervalue = lettervalue % 26
+
+                    currentchar = letters[lettervalue]
+                outputstring = outputstring + currentchar
+            newtext = newtext + outputstring
+
+    print("Here is the encoded text. It has been added to the bottom of the textfile::: " , newtext)
+    with open(filename, "a") as filevar:
+        filevar.write("\n\n" + newtext)
+
+if encodeordecode in ("decode","Decode"):
+
+
+
+    correctlydecoded = False
+
+    while correctlydecoded == False:
+        newtext = ""
+        shift = int(input("How much to shift?"))
+        direction = input("In what direction? Right or left? ")
+
+        with open(filename, "r") as filevar:
+            for line in filevar:         #For every line in the file
+                print(line)
+                outputstring = ""
+
+                characters = len(line)
+
+                for i in range(0, characters):  #For every character in the line
+                    currentchar = line[i]
+
+                    if currentchar in letters:  #IF the character is a letter
+
+                        lettervalue = letters.index(currentchar)
+
+                        if direction in ("right", "r"):
+                            lettervalue += shift
+                        if direction in ("left", "l"):
+                            lettervalue -= shift
+
+                        lettervalue = lettervalue % 26
+
+                        currentchar = letters[lettervalue]
+                    outputstring = outputstring + currentchar
+                newtext = newtext + outputstring
+        print(newtext)
+
+        filevar.close()
+
+        lookscorrect = input("Above is both the cipher and plaintext. Does it look right? ")
+        if lookscorrect in ("yes","Yes"):
+            correctlydecoded = True
+
+
+
+
+
+    print("Now that you deem it as correct, the correctly decoded text has been added to the text file :) ")
+    with open(filename, "a") as filevar:
+        filevar.write("\n\n" + newtext)
