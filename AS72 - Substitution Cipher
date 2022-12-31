@@ -1,0 +1,26 @@
+letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v","w", "x", "y", "z"]
+newalphabet = []
+
+stringtoencode = "mirror"
+encodedstring = ""
+
+import random
+
+for i in range(0,26):
+  index = random.randint(0,25)
+  newletter = letters[index]
+  while newletter not in newalphabet:
+    index = random.randint(0,25)
+    newletter = letters[index]
+
+  newalphabet.append(newletter)
+
+print(newalphabet)
+
+for i in range(0,len(stringtoencode)):
+  lettervalue = letters.index(stringtoencode[i])
+  encodedstring = encodedstring + newalphabet[lettervalue]
+
+
+print("Original string = ", stringtoencode)
+print("New string = ", encodedstring)
