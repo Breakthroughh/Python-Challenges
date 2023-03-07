@@ -1,0 +1,62 @@
+class Point:
+    """
+    The point class represents and manipulates x,y coords.
+    """
+
+    def __init__(self, x=0, y=0):
+        """ Create a new point with x,y """
+        #Init standds for initialiser.
+        # It is called when a new instancce of Point is created
+        #Lets you set up the attributes required
+
+        #The self parameter creates a reference to the newly created object
+        self.x = x
+        self.y = y
+
+    def distance_from_origin(self):
+        """Compute distance from origin"""
+        return ((self.x ** 2) + (self.y**2)) **0.5
+ #Makes p a variable in class Point
+p = Point(3,4)
+q = Point(1,2)
+r = Point()
+print(("The point p has x= {0}, y = {1}").format(p.x, p.y))
+
+print("P is " ,p.distance_from_origin(), "units from the origin")
+class Name:
+
+    def __init__(self, firstname="", surname=""):
+        """Create new name"""
+        self.firstname = firstname
+        self.surname = surname
+
+    def print_name(name):
+        print(("Name:  {0}, {1}").format(name.firstname, name.surname))
+
+Person1 = Name("Bobby", "Lee")
+Name.print_name(Person1)   #Function must be called under the class "Name"
+
+
+#Ex15.7 and reset
+
+class Point:
+
+    def __init__(self,x=0,y=0):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return "({0}, {1})".format(self.x, self.y)
+
+    def midpoint(p1,p2):
+        midx = (p1.x + p2.x)/2
+        midy = (p1.y + p2.y)/2
+        return Point (midx,midy)   #Creates and returns a new Point object
+
+p = Point(3,4)
+q = Point(10,20)
+print( str(p) )
+
+r = Point.midpoint(p,q)
+print(r)
+
