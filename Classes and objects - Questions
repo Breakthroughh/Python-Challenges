@@ -1,0 +1,118 @@
+#Q1
+class Point:
+    def __init__(self,x=0,y=0):
+        self.x = x
+        self.y = y
+
+    def distance(p1,p2):
+        xdif = p1.x-p2.x
+        ydif = p1.y-p2.y
+
+        dist = (xdif**2 + ydif ** 2) ** 0.5
+        return dist
+
+A = Point(2,3)
+B = Point(5,7)
+
+r = Point.distance(A,B)
+print(r)
+
+
+
+print('''
+Q2,3 and 4
+''')
+class Point:
+
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def reflect_x(self):
+        x = self.x
+        y = self.y
+        r = -x
+        return str(Point(r, y))
+
+    def __str__(self):
+        return "({0}, {1})".format(self.x, self.y)
+
+    def slope_from_origin(self):
+        x = self.x
+        y = self.y
+        return (y/x)
+
+    def linear_equation(p1,p2):
+        #Gradient calculation
+        xdif = p2.x - p1.x
+        ydif = p2.y - p1.y
+
+        m = ydif/xdif
+
+        #Sub in one point
+        c = p2.y - m*p2.x
+
+        return str(("y = {0}x + {1}").format(m,c))
+
+A = Point(3, 5)
+print(A)
+r = Point(3, 5).reflect_x()
+print(r)
+
+print(Point(4,10).slope_from_origin())
+
+print(Point(2,11).linear_equation(Point(15,63)))
+
+#Q5 and reset
+
+class Point:
+
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return "{0},{1}".format(self.x,self.y)
+
+    def midpoint(self, p2):
+        midx = (self.x + p2.x)/2
+        midy = (self.y + p2.y)/2
+        return Point(midx,midy)
+
+    def gradient(p1,p2):
+        # Gradient calculation
+        xdif = p2.x - p1.x
+        ydif = p2.y - p1.y
+
+        m = ydif / xdif
+
+        return m
+
+    def find_circle_centre(p1,p2,p3,p4):
+        firstmidpoint = Point.midpoint(p1,p2)
+        firstm = Point.gradient(p1,p2)
+        firstperpendicularm = (-1)/firstm
+
+        secondmidpoint = Point.midpoint(p3,p4)
+        secondm = Point.gradient(p3,p4)
+        secondperpendicularm = (-1)/secondm
+
+        #Find line of first pair
+        firstc = firstmidpoint.y - firstperpendicularm*firstmidpoint.x
+        secondc = secondmidpoint.y - secondperpendicularm*secondmidpoint.x
+
+        #Find x coordinate of intersection of 2 lines
+        centrex = (secondc - firstc) / (firstperpendicularm - secondperpendicularm)
+
+        #Sub into one of the lines:
+        centrey = firstperpendicularm*centrex + firstc
+
+        return "Centre is ({0}.{1})".format(centrex, centrey)
+
+a = Point(8,7)
+b = Point(-2,-3)
+c = Point(10,3)
+d = Point(4,9)
+
+q = Point.find_circle_centre(a,b,c,d)
+print(q)
