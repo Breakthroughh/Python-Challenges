@@ -1,0 +1,36 @@
+import turtle
+
+
+class pattern():
+    def __init__(self, angle: int, times: int):
+        self.__angle = angle # Integer
+        self.__times = times # Integer
+
+    def draw_pattern(self):
+        colors = ['red', 'purple', 'blue', 'green', 'orange', 'yellow']
+        turtle.setup(800, 600)  # setting window dimensions
+        turtle.bgcolor('black')
+        for x in range(self.__times):
+            turtle.pencolor(colors[x % 6])
+            turtle.width(x / 100 + 1)
+            turtle.forward(x)
+            turtle.left(self.__angle)
+        turtle.done()
+
+
+#mypattern = pattern(120, 100)  # Demo pattern
+#mypattern.draw_pattern()
+
+with open ("patterns.txt", "r") as f:
+    patternlist = []
+    for i in range(1,6):
+        angle = int(f.readline())
+        lines = int(f.readline())
+        patternlist.append(pattern(angle, lines))
+
+
+patternlist[1].draw_pattern()
+
+    
+
+
