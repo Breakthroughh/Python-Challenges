@@ -1,0 +1,30 @@
+class DadJokes():
+    def __init__(self, prompt, answer):
+        self.prompt = prompt
+        self.answer = answer
+    
+    def get_prompt(self):
+        return str(self.prompt)
+    
+    def get_answer(self):
+        return str(self.answer)
+
+with open ("DadJokes.txt", "r") as f:
+    dadjokelist = []
+    for i in range(1,11):
+        prompt = f.readline()
+        answer = f.readline()
+
+        dadjokelist.append(DadJokes(prompt, answer))
+
+    
+
+import random
+def PrintRandomJoke():
+    randomnum = random.randint(0,len(dadjokelist)-1)
+
+
+    answer = input(f"Question:  {dadjokelist[randomnum].get_prompt()}")
+    print(f"Actual answer = {dadjokelist[randomnum].get_answer()}")
+
+PrintRandomJoke()
